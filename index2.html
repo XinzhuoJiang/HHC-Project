@@ -262,9 +262,6 @@ $(document).ready(function(){
 
 <script type="text/javascript">
     function submitFunc(event){
-       
-
-      
        console.log("Hey what are you looking for? ");
         event.preventDefault();
         obj = {
@@ -279,22 +276,16 @@ $(document).ready(function(){
         };
         console.log(obj);
         
-        $.get("/search/api").done(function (data) {
-            // request finished
-        });
- 
-        /*$.ajax({
+       $.ajax({
         url:"/search/info/api",
         type:"POST",
         contentType: "application/json",
         dataType:"json",
         data: JSON.stringify(obj),
         success:function(data){
-            
-            alert(data);
-            //$("#logit_table").html(data)
+            $("#logit_table").html(data)
         }}
 
-        );  */  
+        );  
     }
 </script>
