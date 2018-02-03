@@ -1,0 +1,13 @@
+.chart{
+	border-collapse : collapse;
+	width:100;
+}
+
+.date{
+	
+}
+.cell{
+	font-family: Arial;
+	font-weight: normal;
+	border: 1px solid black;
+}

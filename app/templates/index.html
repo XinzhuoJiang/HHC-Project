@@ -7,6 +7,7 @@
             
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css"  href="/static/css/style.css">
 
     </head>
     
@@ -212,58 +213,39 @@
             </div>
             <div id = "result">
                 <h1>The patient no-show rate is</h1>
-                <input type="text" name="result_text" id = "result" readonly>
-                <!--<table class="table" id="logit_table">
-                    <tr>
-                        for (i=7, i<=19; i++)
-                        {<th>i</th>}
-                    </tr>
-                </table>-->
-                <!--<table class="table" id="logit_table">
-                    <tr>
-                    <script type="text/javascript">
-                        function submitFunction() {
-                            var x = " ", i;
-                            for (i = 7; i<= 19; i++) {
-                                x = x + "<th>" + i + "</th>";
-                            }
-                            document.getElementById("demo").innerHTML = x;
-                        }
-                    </script>
-                    </tr>
-                </table>-->
+                <div id = "result_table">
+                    
+                </div>
             </div>
         </form>
     </body>  
 </html>
 
 
-<script type="text/javascript">
-    function submitFunc(event){
-        console.log("Hey what are you looking for? ")
-        event.preventDefault();
-        obj = {
-            MRN: $("#MRN").val(),
-            year: $("#year").val(),
-            month: $("#month").val(),
-            day: $("#day").val(),
-            hour: $("#hour").val(),
-            minute: $("#minute").val(),
-            Dept: $("#Dept").val(),
-            Practice: $("#Practice").val()
-        };
-        console.log(obj)
+<script type="text/javascript" src = "/static/js/main.js">
 
-
-        $.ajax({
-        url:"/search/info/api",
-        type:"POST",
-        contentType: "application/json",
-        dataType:"json",
-        data: JSON.stringify(obj),
-        success:function(data){
-            $("#result").html(data.noShowRate)
-        }}
-        );    
-    }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

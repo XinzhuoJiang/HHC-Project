@@ -6,7 +6,9 @@ from noshow import sav_load
 
 
 
-app = Flask(__name__)
+# app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
+
 
 @app.route('/search', methods=['GET'])
 def render_home_page():
@@ -16,7 +18,7 @@ def render_home_page():
 @app.route('/search/info/api', methods=['POST'])
 
 def get_info():
-    obj = request.get_json(force=True)
+	obj = request.get_json(force=True)
 	print(obj)
 	MRN = obj['MRN']
 	year = obj['year']
@@ -27,7 +29,7 @@ def get_info():
 	dept = obj['Dept']
 	practice = obj['Practice']
 	start_time = str(year)+"-"+str(month)+"-"+str(day)+ " " + str(hour) + ":" + str(minute)
-	logit_file_path = 'S:/ExecutiveAdministration/Health Analytics/Internship Program/4. Appointment Show Rate/Logistic Regression/Data/Machine_Learning_Method_Data/L1_model.sav'
+	logit_file_path = './Data/L1_model.sav'
 	pred_method_logit = sav_load(logit_file_path)
 	logit_predict_result = no_show_func(MRN, dept, start_time, practice, pred_method_logit)
 	jsonfiles = logit_predict_result.to_json(orient='index')
