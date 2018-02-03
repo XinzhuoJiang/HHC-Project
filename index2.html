@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Xinzhuo Jiang">
+        <meta name="description" content="This website is designed for patient appointment no-show rate prediction in Lincoln Hospital."
+            
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    </head>
+    
+    <body>
+        <img src="{{url_for('static', filename='lincoln_icon.jpg')}}" alt="Icon">
+        <h1>Please enter the patient MRN:</h1>
+        <form method="POST" action="/">
+            <div class="form-group">
+                <input type="text" name="MRN" id = "MRN">
+            </div>
+        <h1>Please select the appointment time:</h1>
+            <div class="form_group">
+                <p><strong>Year</strong> &nbsp;&nbsp;&nbsp; <strong>Month</strong> &nbsp;&nbsp; <strong>Day</strong></p>
+                 <select name="year" id = "year">
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                </select>
+                <select name="month" id = "month">
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <select name="day" id = "day">
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+                <p><strong>Hour</strong> &nbsp; <strong>Minute</strong></p>
+                <select name="hour" id = "hour">
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                </select> 
+                <select name="minute" id = "minute">
+                    <option value="00">00</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+        <h1>Please select the appointment department and practice:</h1>
+            <div class="form_group">
+             <p><strong>Department</strong> &nbsp; <strong>Practice</strong></p>
+                <select name="Dept" id = "Dept" >
+                    <option value="AMSUR LI">AMSUR LI</option>
+                    <option value="CC LI">CC LI</option>
+                    <option value="CHEM LI">CHEM LI</option>
+                    <option value="ED REF LI">ED REF LI</option>
+                    <option value="IP REF LI">IP REF LI</option>
+                    <option value="MED LI">MED LI</option>
+                    <option value="MSC LI">MSC LI</option>
+                    <option value="OPTH LI">OPTH LI</option>
+                    <option value="PED LI">PED LI</option>
+                    <option value="PSC LI">PSC LI</option>
+                    <option value="REH LI">REH LI</option>
+                    <option value="VIR LI">VIR LI</option>
+                    <option value="WHS LI">WHS LI</option>
+                </select>
+                <select name="Practice" id = "Practice" >
+                    <option slected = "selected" value='Adult Dermatology'>Adult Dermatology</option>
+                    <option value='Adult Orthopedics'>Adult Orthopedics</option>
+                    <option value='Allergy'>Allergy</option>
+                    <option value='Audiology'>Audiology</option>
+                    <option value='Breast Oncology'>Breast Oncology</option>
+                    <option value='Cancer Center Genetics'>Cancer Center Genetics</option>
+                    <option value='Cardiology'>Cardiology</option>
+                    <option value='Colorectal'>Colorectal</option>
+                    <option value='Diabetes'>Diabetes</option>
+                    <option value='EMG'>EMG</option>
+                    <option value='ENT'>ENT</option>
+                    <option value='Endocrine'>Endocrine</option>
+                    <option value='Eye'>Eye</option>
+                    <option value='Family Planning'>Family Planning</option>
+                    <option value='GI'>GI</option>
+                    <option value='General Pediatrics'>General Pediatrics</option>
+                    <option value='General Surgery'>General Surgery</option>
+                    <option value='Geriatrics'>Geriatrics</option>
+                    <option value='Gynecology'>Gynecology</option>
+                    <option value='Gynecology Oncology'>Gynecology Oncology</option>
+                    <option value='Hand Surgery'>Hand Surgery</option>
+                    <option value='Hematology Oncology'>Hematology Oncology</option>
+                    <option value='Hepatitis'>Hepatitis</option>
+                    <option value='Immunology'>Immunology</option>
+                    <option value='Infectious Disease'>Infectious Disease</option>
+                    <option value='Integrated Wellness'>Integrated Wellness</option>
+                    <option value='Integrated Wellness - Nurse Visit'>Integrated Wellness - NurseVisit</option>
+                    <option value='Integrated Wellness - Social Work'>Integrated Wellness - SocialWork</option>
+                    <option value='Interventional Radiology'>Interventional Radiology</option>
+                    <option value='Med Coumadin Revisit'>Med Coumadin Revisit</option>
+                    <option value='Medicine'>Medicine</option>
+                    <option value='Neonatal'>Neonatal</option>
+                    <option value='Neurology'>Neurology</option>
+                    <option value='Neuroradiology'>Neuroradiology</option>
+                    <option value='Neurosurgery'>Neurosurgery</option>
+                    <option value='OB High Risk 5D'>OB High Risk 5D</option>
+                    <option value='Obstetrics'>Obstetrics</option>
+                    <option value='Occupational Therapy'>Occupational Therapy</option>
+                    <option value='Ophthalmology'>Ophthalmology</option>
+                    <option value='Optometry'>Optometry</option>
+                    <option value='Pain Management '>Pain Management </option>
+                    <option value='Palliative Care'>Palliative Care</option>
+                    <option value='Pediatric Adolescent'>Pediatric Adolescent</option>
+                    <option value='Pediatric Allergy'>Pediatric Allergy</option>
+                    <option value='Pediatric Asthma'>Pediatric Asthma</option>
+                    <option value='Pediatric Cardiology'>Pediatric Cardiology</option>
+                    <option value='Pediatric Dermatology'>Pediatric Dermatology</option>
+                    <option value='Pediatric Development'>Pediatric Development</option>
+                    <option value='Pediatric Diabetes'>Pediatric Diabetes</option>
+                    <option value='Pediatric Endocrine'>Pediatric Endocrine</option>
+                    <option value='Pediatric GI'>Pediatric GI</option>
+                    <option value='Pediatric Genetics'>Pediatric Genetics</option>
+                    <option value='Pediatric Hematology'>Pediatric Hematology</option>
+                    <option value='Pediatric Immunology'>Pediatric Immunology</option>
+                    <option value='Pediatric Infectious Disease'>Pediatric Infectious Disease</option>
+                    <option value='Pediatric Nephrology'>Pediatric Nephrology</option>
+                    <option value='Pediatric Neurology'>Pediatric Neurology</option>
+                    <option value='Pediatric Obesity'>Pediatric Obesity</option>
+                    <option value='Pediatric Orthopedics'>Pediatric Orthopedics</option>
+                    <option value='Pediatric Pulmonary'>Pediatric Pulmonary</option>
+                    <option value='Pediatric Surgery'>Pediatric Surgery</option>
+                    <option value='Pediatric TB'>Pediatric TB</option>
+                    <option value='Pediatric Urology'>Pediatric Urology</option>
+                    <option value='Physical Therapy'>Physical Therapy</option>
+                    <option value='Plastic Surgery'>Plastic Surgery</option>
+                    <option value='Podiatry'>Podiatry</option>
+                    <option value='Pulmonary'>Pulmonary</option>
+                    <option value='Rehab MD'>Rehab MD</option>
+                    <option value='Renal'>Renal</option>
+                    <option value='Retina'>Retina</option>
+                    <option value='Rheumatology'>Rheumatology</option>
+                    <option value='SATURDAYCHEMO'>SATURDAYCHEMO</option>
+                    <option value='Skin Surgery'>Skin Surgery</option>
+                    <option value='Speech'>Speech</option>
+                    <option value='Surgical Oncology'>Surgical Oncology</option>
+                    <option value='Thoracic Surgery'>Thoracic Surgery</option>
+                    <option value='ULTRASOUND 5D '>ULTRASOUND 5D </option>
+                    <option value='Urology'>Urology</option>
+                    <option value='VIRREVISIT'>VIRREVISIT</option>
+                    <option value='VIRSAMEDAY'>VIRSAMEDAY</option>
+                    <option value='Vascular Surgery'>Vascular Surgery</option>
+                    <option value='Virology Gyn'>Virology Gyn</option>
+                </select>
+            </div>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <!--<button onclick="submitFunction()"> Submit </button>
+
+            <div class="form_group", id = "demo"></div>-->
+            <input class="btn btn-primary" type="submit" value="submit" onclick="submitFunc(event)">
+            </div>
+            <div id = "result">
+                <h1>The patient no-show rate is</h1>
+                <!--<input type="text" name="result_text" id = "result" readonly>-->
+                <table class="table" id="logit_table">
+                    <tr>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>10</th>
+                        <th>11</th>
+                        <th>12</th>
+                        <th>13</th>
+                        <th>14</th>
+                        <th>15</th>
+                        <th>16</th>
+                        <th>17</th>
+                        <th>18</th>
+                        <th>19</th>
+                    </tr>
+                </table>
+        </form>
+    </body>
+</html>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $.getJSON(json.loads(jsonfiles), function(data){
+        var noshow_rate = '';
+        $.each(data, function(key, value){
+            noshow_rate += '<tr>';
+            noshow_rate += '<td>'+ value.7 +'</td>';
+            noshow_rate += '<td>'+ value.8 +'</td>';
+            noshow_rate += '<td>'+ value.9 +'</td>';
+            noshow_rate += '<td>'+ value.10 +'</td>';
+            noshow_rate += '<td>'+ value.11 +'</td>';
+            noshow_rate += '<td>'+ value.12 +'</td>';
+            noshow_rate += '<td>'+ value.13 +'</td>';
+            noshow_rate += '<td>'+ value.14 +'</td>';
+            noshow_rate += '<td>'+ value.15 +'</td>';
+            noshow_rate += '<td>'+ value.16 +'</td>';
+            noshow_rate += '<td>'+ value.17 +'</td>';
+            noshow_rate += '<td>'+ value.18 +'</td>';
+            noshow_rate += '<td>'+ value.19 +'</td>';
+            noshow_rate += '</tr>';
+        });
+        $('#logit_table').append(noshow_rate);
+    });
+});
+</script>
+
+<script type="text/javascript">
+    function submitFunc(event){
+       
+
+      
+       console.log("Hey what are you looking for? ");
+        event.preventDefault();
+        obj = {
+            MRN: $("#MRN").val(),
+            year: $("#year").val(),
+            month: $("#month").val(),
+            day: $("#day").val(),
+            hour: $("#hour").val(),
+            minute: $("#minute").val(),
+            Dept: $("#Dept").val(),
+            Practice: $("#Practice").val()
+        };
+        console.log(obj);
+        
+        $.get("/search/api").done(function (data) {
+            // request finished
+        });
+ 
+        /*$.ajax({
+        url:"/search/info/api",
+        type:"POST",
+        contentType: "application/json",
+        dataType:"json",
+        data: JSON.stringify(obj),
+        success:function(data){
+            
+            alert(data);
+            //$("#logit_table").html(data)
+        }}
+
+        );  */  
+    }
+</script>
