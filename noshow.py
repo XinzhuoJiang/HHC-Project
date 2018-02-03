@@ -4,17 +4,17 @@ from datetime import timedelta
 import numpy as np 
 import pickle
 
-patient_data = pd.read_csv('S:/ExecutiveAdministration/Health Analytics/Internship Program/4. Appointment Show Rate/Logistic Regression/Data/Train_Test_Data/app_numofvisit_greaterthan0_test.csv')
-Practice_Noshow_df = pd.read_csv('S:/ExecutiveAdministration/Health Analytics/Internship Program/4. Appointment Show Rate/Logistic Regression/Data/Static_Data/Practice_Noshow_df.csv', header = None)
-Dept_Number_df = pd.read_csv('S:/ExecutiveAdministration/Health Analytics/Internship Program/4. Appointment Show Rate/Logistic Regression/Data/Static_Data/Dept_number.csv')
-Hour_Noshow_df = pd.read_csv('S:/ExecutiveAdministration/Health Analytics/Internship Program/4. Appointment Show Rate/Logistic Regression/Data/Static_Data/Hour_Noshow_df.csv', header = None)
-Month_Noshow_df = pd.read_csv('S:/ExecutiveAdministration/Health Analytics/Internship Program/4. Appointment Show Rate/Logistic Regression/Data/Static_Data/Month_Noshow_df.csv', header = None)
+patient_data = pd.read_csv('last_month_test.csv')
+Practice_Noshow_df = pd.read_csv('Practice_Noshow_df.csv', header = None)
+Dept_Number_df = pd.read_csv('Dept_number.csv')
+Hour_Noshow_df = pd.read_csv('Hour_Noshow_df.csv', header = None)
+Month_Noshow_df = pd.read_csv('Month_Noshow_df.csv', header = None)
 
 Practice_Noshow_df = Practice_Noshow_df.set_index(0)
 Dept_Number_df = Dept_Number_df.drop(['Unnamed: 0'], axis = 1)
 
 patient_data['MRN'] = (patient_data['MRN']).astype(int)
-patient_info = patient_data.drop(['Unnamed: 0','NoShowInd'], axis = 1)
+patient_info = patient_data.drop(['NoShowInd'], axis = 1)
 
 patient_info_simple = patient_info.groupby('MRN').last().reset_index()
 
@@ -27,7 +27,7 @@ def no_show_func(MRN, dept, start_time, practice, pred_method):
 	patient_sched_info['Dept'] = Dept_Number_df.loc[Dept_Number_df['Name'] == patient_dept, 'number'].iloc[0]
 	patient_sched_info['Practice'] = patient_practice
 	patient_sched_info['Practice1'] = Practice_Noshow_df.loc[practice][1]
-	patient_sched_info = patient_sched_info.drop(['MRN','Practice','Poverty'], axis = 1)
+	patient_sched_info = patient_sched_info.drop(['MRN','Practice','Poverty','SchedStrDtime'], axis = 1)
 
 	i = patient_sched_info.index[0]
 #Time
